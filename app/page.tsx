@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Fx from './fx'
 import LeadForm from './lead-form'
 import Testimonials from './testimonials'
+import CountUp from './count-up'
 
 /* =========================================================
    CONFIGURAÇÃO DO EVENTO
@@ -80,24 +81,25 @@ export default function Page() {
           revelarem branco, e não o cinza do fundo do body) */}
       <div className="hero-bleed">
       <section className="hero" id="topo">
+        <div className="aurora" aria-hidden="true"><span /><span /><span /></div>
         <div className="wrap">
-          <div className="hero-logo">
+          <div className="hero-logo hero-in">
             <Image src="/logo-branca1f.svg" alt="Método VDE 1ª Fase" width={203} height={65} priority />
           </div>
-          <h1>{HEADLINES[HEADLINE_ATIVA]}</h1>
-          <h2 className="hero-sub">
+          <h1 className="hero-in" style={{ '--delay': '0.1s' } as React.CSSProperties}>{HEADLINES[HEADLINE_ATIVA]}</h1>
+          <h2 className="hero-sub hero-in" style={{ '--delay': '0.2s' } as React.CSSProperties}>
             Em <b>1 aula gratuita e ao vivo</b> no dia <b>{EVENTO.data}</b>, às{' '}
             <b>{EVENTO.hora}</b>, você vai ter acesso ao passo a passo que já
             aprovou <b>+100 mil alunos</b>.
           </h2>
 
-          <div className="hero-meta">
+          <div className="hero-meta hero-in" style={{ '--delay': '0.3s' } as React.CSSProperties}>
             <span className="meta"><span className="ck"><IconCalendar /></span>{EVENTO.data}</span>
             <span className="meta"><span className="ck"><IconClock /></span>{EVENTO.hora}</span>
-            <span className="meta"><span className="ck"><IconLive /></span>{EVENTO.formato}</span>
+            <span className="meta"><span className="ck"><IconLive /></span><span className="live-dot" aria-hidden="true" />{EVENTO.formato}</span>
           </div>
 
-          <div className="capture" id="inscricao">
+          <div className="capture hero-in" id="inscricao" style={{ '--delay': '0.42s' } as React.CSSProperties}>
             <LeadForm />
           </div>
         </div>
@@ -111,8 +113,8 @@ export default function Page() {
             <p className="sec-eyebrow">Datas essenciais para a <span className="grad-text">OAB&nbsp;48</span></p>
           </div>
           <div className="dates reveal">
-            {DATAS.map((d) => (
-              <div className={`date-card${d.hl ? ' hl' : ''}`} key={d.lab}>
+            {DATAS.map((d, i) => (
+              <div className={`date-card${d.hl ? ' hl' : ''}`} key={d.lab} style={{ '--i': i } as React.CSSProperties}>
                 <div className="lab">{d.lab}</div>
                 <div className={`day${d.hl ? '' : ' grad-text'}`}>{d.day}</div>
                 <div className="desc">{d.desc}</div>
@@ -159,15 +161,16 @@ export default function Page() {
 
       {/* SEÇÃO 5: Quem é o Método VDE (faixa com o degradê oficial da marca) */}
       <section className="sec sec-brand">
+        <div className="aurora" aria-hidden="true"><span /><span /><span /></div>
         <div className="wrap">
           <div className="sec-head reveal">
             <h2>O Método VDE já aprovou <span className="grad-text">+100 mil&nbsp;alunos</span> na OAB</h2>
             <p>Você vai estudar com quem mais entende do Exame de Ordem no Brasil.</p>
           </div>
           <div className="stats reveal">
-            <div className="stat"><strong className="grad-text">+100.000</strong><span>aprovados na OAB</span></div>
-            <div className="stat"><strong className="grad-text">+8 anos</strong><span>trabalhando com o Exame de Ordem</span></div>
-            <div className="stat"><strong className="grad-text">+120 mil</strong><span>livros vendidos pela Editora Juspodivm</span></div>
+            <div className="stat" style={{ '--i': 0 } as React.CSSProperties}><strong className="grad-text"><CountUp to={100000} prefix="+" /></strong><span>aprovados na OAB</span></div>
+            <div className="stat" style={{ '--i': 1 } as React.CSSProperties}><strong className="grad-text"><CountUp to={8} prefix="+" suffix=" anos" duration={1200} /></strong><span>trabalhando com o Exame de Ordem</span></div>
+            <div className="stat" style={{ '--i': 2 } as React.CSSProperties}><strong className="grad-text"><CountUp to={120} prefix="+" suffix=" mil" duration={1400} /></strong><span>livros vendidos pela Editora Juspodivm</span></div>
           </div>
           <div className="cta-band reveal">
             <a className="btn btn-light btn-lg" href="#inscricao">Quero minha vaga na aula gratuita</a>
