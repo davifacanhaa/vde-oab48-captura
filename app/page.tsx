@@ -41,12 +41,15 @@ const DATAS = [
   { lab: 'Cronograma VDE', day: '12/10/2026', desc: 'Início do cronograma de 90 dias do Método VDE.', hl: false },
 ]
 
+/* Os 5 passos são os mesmos da plataforma VDE (Resumo, Questões, Lei Seca,
+   Caderno Digital, Videoaula). As descrições aqui são próprias, não as
+   subheadlines curtas que aparecem dentro da plataforma. */
 const PASSOS = [
-  { t: 'Resumo direcionado', p: 'Você pré-estuda o conteúdo lendo resumos objetivos, que dão a base do assunto sem perder tempo com o que não cai.' },
-  { t: 'Questões comentadas', p: 'Depois faz questões da FGV para contextualizar o conteúdo e se acostumar com o jeito que a banca cobra.' },
-  { t: 'Lei seca', p: 'Mais de 90% das questões da OAB são fundamentadas na lei seca, por isso a leitura entra no cronograma todo dia.' },
-  { t: 'Videoaulas', p: 'Ficam para os assuntos mais difíceis ou para as disciplinas em que você tem mais dificuldade. Não são o centro do estudo.' },
-  { t: 'Revisão', p: 'Em 90 dias você estuda centenas de conteúdos. Sem revisões frequentes e bem feitas é impossível lembrar de tudo na prova.' },
+  { t: 'Resumo', p: 'Você abre o tema por um resumo direto, que dá a base do assunto sem te fazer perder tempo com o que a prova não cobra.' },
+  { t: 'Questões', p: 'Em seguida resolve questões daquele mesmo tema, para fixar o conteúdo enquanto se acostuma com o jeito que a banca pergunta.' },
+  { t: 'Lei Seca', p: 'Mais de 90% das questões da OAB saem da lei, então a leitura dos artigos que mais caem entra no cronograma de todo dia.' },
+  { t: 'Caderno Digital', p: 'Você anota na plataforma o que aprendeu e onde errou. Esse caderno vira o seu material de revisão na reta final.' },
+  { t: 'Videoaula', p: 'Se ainda restou dúvida depois dos passos anteriores, a videoaula do tema entra para destravar aquele ponto específico.' },
 ]
 
 /* Depoimentos reais: prints das mensagens dos alunos aprovados com o
@@ -130,7 +133,7 @@ export default function Page() {
         <div className="wrap">
           <div className="sec-head reveal">
             <h2>O passo a passo do Método que já aprovou <span className="grad-text">+100 mil&nbsp;alunos</span></h2>
-            <p>É a mesma sequência que já levou milhares de alunos à aprovação. Na aula eu mostro como ela cabe em 90 dias.</p>
+            <p>É a sequência que você repete em cada tema do cronograma. Na aula eu mostro como ela cabe em 90 dias.</p>
           </div>
           <div className="timeline">
             {PASSOS.map((s, i) => (
